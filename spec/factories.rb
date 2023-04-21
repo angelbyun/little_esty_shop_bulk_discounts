@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :bundle_discount do
+    item_quantity { 1 }
+    discount { 1 }
+    merchant { nil }
+  end
+
   factory :customer do
     first_name {Faker::Name.first_name}
     last_name {Faker::Dessert.variety}
