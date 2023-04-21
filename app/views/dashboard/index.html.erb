@@ -32,9 +32,11 @@
         <% end %>
       </p>
     </section>
-  </ul>
+  </ul><br>
 
-<p><b>Discounts: </b><%= link_to @merchant.bundle_discount.id, "/bundle_discounts" %>
+<% @merchant.discounts.each do |discount| %>
+<p><b>Discounts: </b><%= link_to discount.id, "/discounts" %></p>
+<% end %>
   
 
 </body>

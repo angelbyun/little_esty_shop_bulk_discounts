@@ -40,9 +40,9 @@ RSpec.describe 'merchant dashboard' do
     @transaction6 = Transaction.create!(credit_card_number: 879799, result: 1, invoice_id: @invoice_7.id)
     @transaction7 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_2.id)
 
-    @discount1 = BundleDiscount.create!(item_quantity: 10, discount: 20, merchant: @merchant1)
-    @discount2 = BundleDiscount.create!(item_quantity: 15, discount: 30, merchant: @merchant1)
-    @discount3 = BundleDiscount.create!(item_quantity: 20, discount: 40, merchant: @merchant1)
+    @discount1 = Discount.create!(item_quantity: 10, discount: 20, merchant: @merchant1)
+    @discount2 = Discount.create!(item_quantity: 15, discount: 30, merchant: @merchant1)
+    @discount3 = Discount.create!(item_quantity: 20, discount: 40, merchant: @merchant1)
 
     visit merchant_dashboard_index_path(@merchant1)
   end
@@ -127,6 +127,6 @@ RSpec.describe 'merchant dashboard' do
   it 'has a link to view all discounts' do
     click_link("#{@discount1.id}")
 
-    expect(current_path).to eq("/bundle_discounts")
+    expect(current_path).to eq("/discounts")
   end
 end
