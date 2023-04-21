@@ -15,15 +15,6 @@ ActiveRecord::Schema.define(version: 2023_04_21_193121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bundle_discounts", force: :cascade do |t|
-    t.integer "item_quantity"
-    t.integer "discount"
-    t.bigint "merchant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["merchant_id"], name: "index_bundle_discounts_on_merchant_id"
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -33,6 +24,15 @@ ActiveRecord::Schema.define(version: 2023_04_21_193121) do
     t.string "city"
     t.string "state"
     t.bigint "zip"
+  end
+
+  create_table "discounts", force: :cascade do |t|
+    t.integer "item_quantity"
+    t.integer "discount"
+    t.bigint "merchant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["merchant_id"], name: "index_discounts_on_merchant_id"
   end
 
   create_table "invoice_items", force: :cascade do |t|
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 2023_04_21_193121) do
     t.index ["invoice_id"], name: "index_transactions_on_invoice_id"
   end
 
-  add_foreign_key "bundle_discounts", "merchants"
+  add_foreign_key "discounts", "merchants"
   add_foreign_key "invoice_items", "invoices"
   add_foreign_key "invoice_items", "items"
   add_foreign_key "invoices", "customers"

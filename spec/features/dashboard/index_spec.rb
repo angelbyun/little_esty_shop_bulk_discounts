@@ -125,6 +125,8 @@ RSpec.describe 'merchant dashboard' do
   end
 
   it 'has a link to view all discounts' do
-    click_link
+    click_link("#{@discount1.id}")
+
+    expect(current_path).to eq("/bundle_discounts")
   end
 end

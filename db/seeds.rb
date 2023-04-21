@@ -4,7 +4,7 @@
     Invoice.destroy_all
     InvoiceItem.destroy_all
     Transaction.destroy_all
-    BundleDiscount.destroy_all
+    Discount.destroy_all
     
     @merchant1 = Merchant.create!(name: 'Hair Care')
     @merchant2 = Merchant.create!(name: 'Jewelry')
@@ -53,9 +53,9 @@
     @transaction7 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_7.id)
     @transaction8 = Transaction.create!(credit_card_number: 203942, result: 1, invoice_id: @invoice_8.id)
 
-    @discount1 = BundleDiscount.create!(item_quantity: 10, discount: 20, merchant: @merchant1)
-    @discount2 = BundleDiscount.create!(item_quantity: 15, discount: 30, merchant: @merchant1)
-    @discount3 = BundleDiscount.create!(item_quantity: 20, discount: 40, merchant: @merchant1)
-    @discount4 = BundleDiscount.create!(item_quantity: 10, discount: 5, merchant: @merchant2)
-    @discount5 = BundleDiscount.create!(item_quantity: 20, discount: 15, merchant: @merchant2)
-    @discount6 = BundleDiscount.create!(item_quantity: 30, discount: 25, merchant: @merchant2)
+    @discount1 = Discount.create!(item_quantity: 10, discount: 20, merchant: @merchant1)
+    @discount2 = Discount.create!(item_quantity: 15, discount: 30, merchant: @merchant1)
+    @discount3 = Discount.create!(item_quantity: 20, discount: 40, merchant: @merchant1)
+    @discount4 = Discount.create!(item_quantity: 10, discount: 5, merchant: @merchant2)
+    @discount5 = Discount.create!(item_quantity: 20, discount: 15, merchant: @merchant2)
+    @discount6 = Discount.create!(item_quantity: 30, discount: 25, merchant: @merchant2)
