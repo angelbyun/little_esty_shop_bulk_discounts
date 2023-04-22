@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # get '/merchant/:merchant_id/discounts/new', to: 'merchant/discounts#new'
+
   resources :merchant, only: [:show] do
     resources :dashboard, only: [:index]
+    resources :discounts, only: [:index, :new, :show]
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
     resources :invoices, only: [:index, :show, :update]
-    resources :discounts, only: [:index, :show]
   end
 
   namespace :admin do

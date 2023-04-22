@@ -4,3 +4,5 @@
 <b><p>Bulk discount is <%= discount.discount %>% off <%= discount.item_quantity %> items</b></p>
 <p>Click here to find out more! <%= link_to "#{discount.id}", "/merchant/#{@merchant.id}/discounts/#{discount.id}" %></p><br>
 <% end %>
+
+<%= link_to "New Discount", "/merchant/#{@merchant.id}/discounts/new" %>
