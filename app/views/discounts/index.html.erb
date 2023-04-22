@@ -1,0 +1,5 @@
+<h1>Discounts Index Page</h1>
+
+<% @merchant.discounts.each do |discount| %>
+<p><b>Bulk Discount is <%= discount.discount %>% off <%= discount.item_quantity %> items
+<% end %>

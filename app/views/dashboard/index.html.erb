@@ -32,11 +32,8 @@
         <% end %>
       </p>
     </section>
-  </ul><br>
+  </ul>
 
-<% @merchant.discounts.each do |discount| %>
-<p><b>Discounts: </b><%= link_to discount.id, "/discounts" %></p>
-<% end %>
-  
+<h3><%= link_to "Discounts", merchant_discounts_path(@merchant) %></p></h3>
 
 </body>
