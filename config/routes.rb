@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # post '/merchant/:merchant_id/discounts', to: 'discounts#create'
+  delete '/merchant/:merchant_id/discounts/:id', to: 'discounts#destroy'
 
   resources :merchant, only: [:show] do
     resources :dashboard, only: [:index]

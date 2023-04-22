@@ -1,8 +1,11 @@
 <h1>Discounts Index Page</h1>
 
 <% @merchant.discounts.each do |discount| %>
+<div id="discount-<%= discount.id %>">
 <b><p>Bulk discount is <%= discount.discount %>% off <%= discount.item_quantity %> items</b></p>
-<p>Click here to find out more! <%= link_to "#{discount.id}", "/merchant/#{@merchant.id}/discounts/#{discount.id}" %></p><br>
+<p>Click here to find out more! <%= link_to "#{discount.id}", "/merchant/#{@merchant.id}/discounts/#{discount.id}" %></p>
+<p><%= button_to "Delete Discount", "/merchant/#{@merchant.id}/discounts/#{discount.id}", method: :delete %></p><br>
+</div>
 <% end %>
 
 <%= link_to "New Discount", "/merchant/#{@merchant.id}/discounts/new" %>
