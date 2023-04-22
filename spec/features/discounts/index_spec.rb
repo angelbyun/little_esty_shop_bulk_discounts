@@ -56,5 +56,13 @@ RSpec.describe "discounts index" do
       expect(page).to have_content(@discount3.item_quantity)
       expect(page).to have_content(@discount3.discount)
     end
+
+    it 'creates a link to each discount listed to the merchant discount show page' do
+      visit "/merchant/#{@merchant1.id}/discounts"
+      save_and_open_page
+      click_link("#{@discount1.id}")
+      
+      expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/#{@discount1.id}")
+    end
   end
 end
