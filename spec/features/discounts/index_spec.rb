@@ -60,9 +60,26 @@ RSpec.describe "discounts index" do
     it 'creates a link to each discount listed to the merchant discount show page' do
       visit "/merchant/#{@merchant1.id}/discounts"
       
-      click_link("#{@discount1.id}")
+      within "#discount-#{@discount1.id}" do
+        click_link("Discount Information")
+      end
       
       expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/#{@discount1.id}")
+      visit "/merchant/#{@merchant1.id}/discounts"
+
+      within "#discount-#{@discount2.id}" do
+        click_link("Discount Information")
+      end
+
+      expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/#{@discount2.id}")
+      visit "/merchant/#{@merchant1.id}/discounts"
+
+      within "#discount-#{@discount3.id}" do
+        click_link("Discount Information")
+      end
+
+      expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/#{@discount3.id}")
+      visit "/merchant/#{@merchant1.id}/discounts"
     end
 
     it 'creates a link to create a new discount' do
