@@ -69,11 +69,10 @@
   <body>
     <div class="top-container">
       <h1 style="text-align:center; background-color:#EBEFF3;">Little Esty Shop</h1>
-      <% flash.each do |type, notice| %>
-        <h3><b><%= notice %></b></h3>
-      <% end %>
-      <%= yield %>
-
     </div>
+    <% flash.each do |type, message| %>
+      <p><%= message %></p>
+    <% end %>
+      <%= yield %>
   </body>
 </html>

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  # get '/merchant/:merchant_id/discounts/new', to: 'merchant/discounts#new'
+  # post '/merchant/:merchant_id/discounts', to: 'discounts#create'
 
   resources :merchant, only: [:show] do
     resources :dashboard, only: [:index]
-    resources :discounts, only: [:index, :new, :show]
+    resources :discounts, only: [:index, :show, :new, :create]
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
     resources :invoices, only: [:index, :show, :update]
