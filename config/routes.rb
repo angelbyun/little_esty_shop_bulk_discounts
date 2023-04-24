@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # post '/merchant/:merchant_id/discounts', to: 'discounts#create'
 
   get '/merchant/:merchant_id/discounts/:id/edit', to: "discounts#edit"
+  patch '/merchant/:merchant_id/discounts/:id/edit', to: 'discounts#update'
   delete '/merchant/:merchant_id/discounts/:id', to: 'discounts#destroy'
 
   resources :merchant, only: [:show] do
