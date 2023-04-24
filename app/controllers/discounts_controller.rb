@@ -27,8 +27,10 @@ class DiscountsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
   def destroy
-    # require 'pry'; binding.pry
     discount = Discount.find(params[:id])
     discount.destroy
     redirect_to "/merchant/#{discount_params[:merchant_id]}/discounts"

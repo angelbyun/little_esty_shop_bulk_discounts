@@ -52,5 +52,13 @@ RSpec.describe "discounts show" do
       expect(page).to have_content(@discount1.item_quantity)
       expect(page).to have_content(@discount1.discount)
     end
+
+    it 'creates a link to edit the discount' do
+      visit "/merchant/#{@merchant1.id}/discounts/#{@discount1.id}"
+
+      click_link("Edit Discount")
+
+      expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/#{@discount1.id}/edit")
+    end
   end
 end
