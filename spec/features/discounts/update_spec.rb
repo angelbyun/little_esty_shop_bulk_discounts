@@ -46,8 +46,13 @@ RSpec.describe 'discounts update page' do
   end
 
   describe 'As a visitor when I visit the discounts update page' do
-    it 'has a form that allows me to change the discount' do
+    it 'has a form that allows me to change the discount with prepopulated values' do
       visit "/merchant/#{@merchant1.id}/discounts/#{@discount1.id}/edit"
+
+      expect(page).to have_field(:item_quantity)
+      expect(find_field(:item_quantity).value).to eq(@discount1.item_quantity.to_s)
+      expect(page).to have_field(:discount)
+      expect(find_field(:discount).value).to eq(@discount1.discount.to_s)
 
       fill_in(:item_quantity, with: 10)
       fill_in(:discount, with: 5)

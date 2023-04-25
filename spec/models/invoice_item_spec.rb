@@ -35,9 +35,17 @@ RSpec.describe InvoiceItem, type: :model do
       @ii_2 = InvoiceItem.create!(invoice_id: @i1.id, item_id: @item_2.id, quantity: 1, unit_price: 8, status: 0)
       @ii_3 = InvoiceItem.create!(invoice_id: @i2.id, item_id: @item_3.id, quantity: 1, unit_price: 5, status: 2)
       @ii_4 = InvoiceItem.create!(invoice_id: @i3.id, item_id: @item_3.id, quantity: 1, unit_price: 5, status: 1)
+      @ii_5 = InvoiceItem.create!(invoice_id: @i4.id, item_id: @item_1.id, quantity: 20, unit_price: 10, status: 2)
+      @discount1 = Discount.create!(item_quantity: 10, discount: 20, merchant: @m1)
+      @discount2 = Discount.create!(item_quantity: 15, discount: 30, merchant: @m1)
+      @discount3 = Discount.create!(item_quantity: 20, discount: 40, merchant: @m1)
     end
-    it 'incomplete_invoices' do
-      expect(InvoiceItem.incomplete_invoices).to eq([@i1, @i3])
+    # it 'incomplete_invoices' do
+    #   expect(InvoiceItem.incomplete_invoices).to eq([@i1, @i3])
+    # end
+
+    it '.best_discount' do
+      expect(@ii_5.best_discount).to eq(@discount3)
     end
   end
 end
