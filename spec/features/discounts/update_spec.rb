@@ -47,7 +47,6 @@ RSpec.describe 'discounts update page' do
 
   describe 'As a visitor when I visit the discounts update page' do
     it 'has a form that allows me to change the discount' do
-      # require 'pry'; binding.pry
       visit "/merchant/#{@merchant1.id}/discounts/#{@discount1.id}/edit"
 
       fill_in(:item_quantity, with: 10)
