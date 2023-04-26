@@ -19,13 +19,26 @@ class Invoice < ApplicationRecord
     invoice_items.joins(:discounts)
     .where(merchants: {id: merchant_id})
     .where("invoice_items.quantity >= discounts.item_quantity")
-    .group(:id)
+    .group(:id) #group by invoice_item ids to condense to be able to find all of the discounted items within the invoice_items
     .select("max(discounts.discount) AS max_discount, invoice_items.*")
   end
 
   def total_discounted_revenue(merchant_id)
     discounted_items(merchant_id).sum do |invoice_item|
-      invoice_item.quantity * (invoice_item.unit_price - (invoice_item.unit_price * invoice_item.max_discount / 100))
+      (invoice_item.unit_price - (invoice_item.unit_price * invoice_item.max_discount / 100)) * invoice_item.quantity
+    end
+  end
+
+  def discounted_items_for_admin
+    invoice_items.joins(:discounts)
+    .where("invoice_items.quantity >= discounts.item_quantity")
+    .group(:id)
+    .select("max(discounts.discount) AS max_discount, invoice_items.*")
+  end
+
+  def total_discounted_revenue_for_admin
+    discounted_items_for_admin.sum do |invoice_item|
+      (invoice_item.unit_price - (invoice_item.unit_price * invoice_item.max_discount / 100)) * invoice_item.quantity
     end
   end
 end

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :merchant, only: [:show] do
     resources :dashboard, only: [:index]
-    resources :discounts, only: [:index, :show, :create]
+    resources :discounts, only: [:index, :show, :create, :new]
     resources :items, except: [:destroy]
     resources :item_status, only: [:update]
     resources :invoices, only: [:index, :show, :update]

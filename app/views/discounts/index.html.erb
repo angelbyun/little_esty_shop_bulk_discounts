@@ -1,5 +1,12 @@
 <h1>Discounts Index Page</h1>
 
+<h3>Upcoming Holidays</h3>
+<ul>
+<li><b><%= @holidays.holiday_1[:name] %></b> <%= @holidays.holiday_1[:date] %>
+<li><b><%= @holidays.holiday_2[:name] %></b> <%= @holidays.holiday_2[:date] %>
+<li><b><%= @holidays.holiday_3[:name] %></b> <%= @holidays.holiday_3[:date] %>
+</ul>
+
 <% @merchant.discounts.each do |discount| %>
 <div id="discount-<%= discount.id %>">
 <b><p>Bulk discount is <%= discount.discount %>% off <%= discount.item_quantity %> items</b></p>

@@ -89,5 +89,14 @@ RSpec.describe "discounts index" do
 
       expect(current_path).to eq("/merchant/#{@merchant1.id}/discounts/new")
     end
+
+    it 'displays upcoming holidays header with name and date of of next 3 upcoming holidays' do
+      visit "/merchant/#{@merchant1.id}/discounts"
+
+      expect(page).to have_content("Upcoming Holidays")
+      expect(page).to have_content("Memorial Day 2023-05-29")
+      expect(page).to have_content("Juneteenth 2023-06-19")
+      expect(page).to have_content("Independence Day 2023-07-04")
+    end
   end
 end

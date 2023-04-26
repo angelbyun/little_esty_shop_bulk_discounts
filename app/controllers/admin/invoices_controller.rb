@@ -1,10 +1,13 @@
 class Admin::InvoicesController < ApplicationController
   before_action :set_invoice, only: [:show, :edit, :update]
+
   def index
     @invoices = Invoice.all
   end
 
   def show
+    @invoice = Invoice.find(params[:id])
+    # require 'pry'; binding.pry
   end
 
   def edit

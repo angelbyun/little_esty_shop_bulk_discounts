@@ -40,9 +40,10 @@ RSpec.describe InvoiceItem, type: :model do
       @discount2 = Discount.create!(item_quantity: 15, discount: 30, merchant: @m1)
       @discount3 = Discount.create!(item_quantity: 20, discount: 40, merchant: @m1)
     end
-    # it 'incomplete_invoices' do
-    #   expect(InvoiceItem.incomplete_invoices).to eq([@i1, @i3])
-    # end
+    
+    it 'incomplete_invoices' do
+      expect(InvoiceItem.incomplete_invoices).to eq([@i1, @i3])
+    end
 
     it '.best_discount' do
       expect(@ii_5.best_discount).to eq(@discount3)
